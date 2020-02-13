@@ -1,7 +1,10 @@
 <h1 align="center"><%= "Category: " + @category.name %></h1>
-<div align="center">
-  <%= will_paginate @articles %>
-</div>
+<% if logged_in? && current_user.admin? %>
+  <div align="center">
+    <span class="badge"><%= link_to "Edit category name", edit_category_path(@category) %></span>
+  </div>
+<% end %>
+<%= will_paginate @articles %>
 <%= render 'articles/article' %>
 <div align="center">
   <%= will_paginate @articles %>
