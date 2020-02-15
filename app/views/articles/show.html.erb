@@ -2,6 +2,21 @@
   Title: <%= @article.title %>
 </h2>
 
+<div align="center">
+  <ul class="listing">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <li>Created by:</li>
+        <li><%= link_to gravatar_for(@article.user), user_path(@article.user) %></li>
+        <li class="article-title">
+          <%= link_to @article.user.username, user_path(@article.user) %>
+        </li>
+        <li><small><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></small></li>
+      </div>
+    </div>
+  </ul>
+</div>
+
 <div class="card col-md-8 offset-md-2">
   <h4 class="card-title center">
     <strong>Description</strong>
